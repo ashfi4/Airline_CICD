@@ -1,6 +1,6 @@
 from airflow import DAG
 from airflow.models.variable import Variable
-from airflow.providers.google.cloud.operators.dataproc import DataprocBatchOperator
+from airflow.providers.google.cloud.operators.dataproc import DataprocCreateBatchOperator
 from airflow.providers.google.cloud.sensor.gcs import GCSObjectExistenceSensor
 from datetime import datetime,timedelta
 import uuid
@@ -85,7 +85,7 @@ class build_dag:
         }
         return batch
     def batch_server(self,dag,batch):
-        server=DataprocBatchOperator(
+        server=DataprocCreateBatchOperator(
             task_id='Serverless_Batch_computation',
             batch=batch,
             batch_id=self.batch_id,
