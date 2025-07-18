@@ -1,0 +1,11 @@
+{
+    "env":"dev",
+    "gcs_bucket":"spark_ariflow_bucket_test",
+    "bq_project":"my-project-68545-465117",
+    "bq_dataset":"flight_data_dev",
+    "tables":{
+        "transformed_table":"transformed_table",
+        "route_insights_table":"route_insights_table",
+        "origin_insights_table":"origin_insights_table"
+    }
+}
