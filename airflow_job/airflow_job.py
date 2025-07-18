@@ -24,7 +24,7 @@ class build_dag:
         self.transformed_table=tables['transformed_table']
         self.route_insights_table=tables['route_insights_table']
         self.origin_insights_table=tables['origin_insights_table']
-        self.batch_id=f'batch_id-{str(uuid.uuid4())[:8]}'
+        self.batch_id=f'batch-id-{str(uuid.uuid4())[:8]}'
 
     def spark_dag(self):
         with DAG(
@@ -63,11 +63,11 @@ class build_dag:
                 'jar_file_uris':[],
                 'args':[
                     f'--env={self.env}',
-                    f'bq_project={self.bq_project}',
-                    f'bq_dataset={self.bq_dataset}',
-                    f'transformed_table={self.transformed_table}',
-                    f'route_insights_table={self.route_insights_table}',
-                    f'origin_insights_table={self.origin_insights_table}'
+                    f'--bq_project={self.bq_project}',
+                    f'--bq_dataset={self.bq_dataset}',
+                    f'--transformed_table={self.transformed_table}',
+                    f'--route_insights_table={self.route_insights_table}',
+                    f'--origin_insights_table={self.origin_insights_table}'
 
                 ]
             },
@@ -89,9 +89,9 @@ class build_dag:
             task_id='Serverless_Batch_computation',
             batch=batch,
             batch_id=self.batch_id,
-            project_id=self.bq_project,
+            project_id='my-project-68545-465117',
             region='us-central1',
-            gcp_conn_id='gcp_cloud_default',
+            gcp_conn_id='google_cloud_default',
             dag=dag
         )
         return server

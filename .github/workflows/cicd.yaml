@@ -68,14 +68,8 @@ jobs:
 
       - name: upload the variable json GCP
         run:  |
-          gsutil cp variables/dev/variables.json gs://us-central1-airflow-prod-fa0c86eb-bucket/data/prod/variables.json
-
-      - name: import  variables in AIRFLOW
-        run:  |
-          gcloud composer environments run airflow-prod \
-            --location us-central1
-          variables import -- /home/airflow/gcs/data/prod/variables.
-          
+          gsutil cp variables/dev/variable.json gs://us-central1-airflow-prod-de43bc48-bucket/data/prod/variable.json
+                 
       # Import Variables into Airflow-DEV
       - name: Import Variables into Airflow-PROD
         run: |
