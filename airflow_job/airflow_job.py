@@ -28,7 +28,7 @@ class build_dag:
 
     def spark_dag(self):
         with DAG(
-            dag_id='Flight_Automation_process',
+            dag_id='Flight_DATA_Automation_process',
             default_args=self.default_args,
             description="Full Automation using GIT",
             schedule_interval=None,
