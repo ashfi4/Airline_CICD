@@ -54,7 +54,7 @@ jobs:
 
     steps:
       - name: checkout code
-        uses: action/checkout@v3
+        uses: actions/checkout@v3
       
       - name: Authentication to GCP
         uses: google-github-actions/auth@v1
